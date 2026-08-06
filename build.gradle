@@ -1,0 +1,36 @@
+plugins {
+    id 'java'
+}
+
+group = 'net.client'
+version = '1.0.0'
+
+sourceCompatibility = JavaVersion.VERSION_1_8
+targetCompatibility = JavaVersion.VERSION_1_8
+
+repositories {
+    mavenCentral()
+    maven {
+        name = 'minecraft'
+        url = 'https://libraries.minecraft.net/'
+    }
+}
+
+dependencies {
+    implementation 'net.minecraft:launchwrapper:1.12'
+    implementation 'org.ow2.asm:asm-debug-all:5.0.3'
+    implementation 'org.lwjgl.lwjgl:lwjgl:2.9.4-nightly-20150209'
+}
+
+jar {
+    manifest {
+        attributes(
+            'TweakClass': 'net.client.launch.ClientTweaker',
+            'Main-Class': 'net.minecraft.launchwrapper.Launch'
+        )
+    }
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
