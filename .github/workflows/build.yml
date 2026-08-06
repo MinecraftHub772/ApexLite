@@ -1,0 +1,35 @@
+name: Build ApexLite Jar
+
+on:
+  push:
+    branches: [ "main", "master" ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Set up JDK 8
+      uses: actions/gradle/actions/setup-java@v3
+      with:
+        java-version: '8'
+        distribution: 'temurin'
+
+    - name: Setup Gradle
+      uses: gradle/actions/setup-gradle@v3
+
+    - name: Grant execute permission for gradlew
+      run: chmod +x gradlew || true
+
+    - name: Build with Gradle
+      run: gradle build
+
+    - name: Upload Compiled Jar
+      uses: actions/upload-artifact@v4
+      with:
+        name: ApexLite-Client-Jar
+        path: build/libs/*.jar
