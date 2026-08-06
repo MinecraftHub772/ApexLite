@@ -13,7 +13,6 @@ repositories {
 }
 
 dependencies {
-    // Only standard ASM bytecode library - no slow Minecraft servers needed
     implementation 'org.ow2.asm:asm-all:5.2'
 }
 
