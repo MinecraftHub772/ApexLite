@@ -1,0 +1,3 @@
+Manifest-Version: 1.0
+TweakClass: net.client.launch.ClientTweaker
+Main-Class: net.minecraft.launchwrapper.Launch
