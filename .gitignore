@@ -1,0 +1,17 @@
+# Build and temporary compilation outputs
+/build/
+/bin/
+/out/
+/target/
+*.jar
+
+# IDE configuration files
+.idea/
+*.iml
+.classpath
+.project
+.settings/
+
+# OS system files
+.DS_Store
+Thumbs.db
