@@ -14,17 +14,14 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v4
 
-    - name: Set up JDK 8
+    - name: Set up JDK 17 for Gradle
       uses: actions/setup-java@v5
       with:
-        java-version: '8'
+        java-version: '17'
         distribution: 'temurin'
 
-    - name: Grant execute permission for gradlew
-      run: chmod +x gradlew || true
-
-    - name: Build Jar
-      run: ./gradlew jar --no-daemon --stacktrace || gradle jar --no-daemon --stacktrace
+    - name: Build Jar (Target Java 8)
+      run: gradle jar --no-daemon -Dorg.gradle.java.home=$JAVA_HOME
 
     - name: Upload Jar Artifact
       uses: actions/upload-artifact@v4
