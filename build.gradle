@@ -5,15 +5,17 @@ plugins {
 group = 'net.client'
 version = '1.0.0'
 
-sourceCompatibility = JavaVersion.VERSION_1_8
-targetCompatibility = JavaVersion.VERSION_1_8
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+}
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    implementation 'org.ow2.asm:asm-all:5.2'
+    compileOnly 'org.ow2.asm:asm-all:5.2'
 }
 
 tasks.withType(JavaCompile) {
