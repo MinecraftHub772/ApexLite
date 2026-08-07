@@ -14,14 +14,20 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v4
 
-    - name: Set up JDK 17 for Gradle
+    - name: Set up Java 8
+      uses: actions/setup-java@v5
+      with:
+        java-version: '8'
+        distribution: 'temurin'
+
+    - name: Set up Java 17 (Default for Gradle)
       uses: actions/setup-java@v5
       with:
         java-version: '17'
         distribution: 'temurin'
 
-    - name: Build Jar (Target Java 8)
-      run: gradle jar --no-daemon -Dorg.gradle.java.home="$JAVA_HOME"
+    - name: Build Jar
+      run: gradle jar --no-daemon
 
     - name: Upload Jar Artifact
       uses: actions/upload-artifact@v4
