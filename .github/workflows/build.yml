@@ -21,7 +21,7 @@ jobs:
         distribution: 'temurin'
 
     - name: Build Jar (Target Java 8)
-      run: gradle jar --no-daemon -Dorg.gradle.java.home=$JAVA_HOME
+      run: gradle jar --no-daemon -Dorg.gradle.java.home="$JAVA_HOME"
 
     - name: Upload Jar Artifact
       uses: actions/upload-artifact@v4
